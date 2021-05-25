@@ -14,6 +14,8 @@ router.get("/logout", auth.logout);
 router.get("/profile/:username", auth.profile);
 router.get("/edit/:username", auth.editProfile);
 router.post("/edit", auth.updateProfile);
+router.get("/remove", auth.deleteProfile);
+router.post("/remove", auth.removeProfile);
 router.post("/likes", auth.likeUser);
 router.get("/matches", auth.showMatches);
 
