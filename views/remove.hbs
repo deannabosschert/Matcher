@@ -1,0 +1,14 @@
+<div class="login removescreen">
+    <div class="login__background"></div>
+    <div class="login__card">
+        <h2>Are you sure?</h2>
+        <span class="form-err-message">{{ data }}</span>
+        <h3 class="removetitle">To confirm that you want to delete your account, type your password below(<span>This cannot be undone</span>):</h3>
+        <form id="" action="/remove" method="POST">
+            <label class="rmpasslabel" for="removePassword">Password</label>
+            <input class="rmpass no-err" type="password" name="removePassword" id="removePassword" placeholder="Password">
+            <button class="removeaccbutton">Delete account</button>
+        </form>
+        <a href="/profile/{{req.body.username}}">Cancel</a>
+    </div>
+</div>
