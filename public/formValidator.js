@@ -1,7 +1,7 @@
 const formValidate = document.querySelector('#login_form')
 if (formValidate) {
-    const signupCard = document.querySelector('.sign-up_card')
-    signupCard.classList.replace('sign-up_card-no-js', 'sign-up_card-has-js')
+    replaceClass('.sign-up_card', 'sign-up_card-no-js', 'sign-up_card-has-js')
+
     if (document.querySelector('.takenUsername').innerHTML) {
         addClass('.sign-up_card', 'sign-up_card-show')
         addClass('.login_card', 'login_card-hide')
@@ -48,7 +48,7 @@ if (formValidate) {
                     toggleClass('#emailLogin', 'err')
                     toggleClass('#emailLogin', 'no-err')
                     insertHTML("#emailLogin", 'Vul je e-mailadres in.')
-                    replaceClass("#emailLogin", 'no-err-message', 'err-message')
+                    replaceSiblingClass("#emailLogin", 'no-err-message', 'err-message')
                 } else {
                     removeClass('#emailLogin', 'no-err')
                     emailLogin.nextElementSibling.classList.replace('no-err-message', 'err-message')
@@ -206,9 +206,6 @@ if (formValidate) {
 function toggleClass(classname, classToggle) {
     document.querySelector(`${classname}`).classList.toggle(`${classToggle}`)
 }
-// function conditionalToggle(condition, classname, classToggle) {
-//     document.querySelector(`${classname}`).classList.toggle(`${classToggle}`)
-// }
 
 function addClass(classname, classToggle) {
     document.querySelector(`${classname}`).classList.add(`${classToggle}`)
@@ -219,9 +216,17 @@ function removeClass(classname, classToggle) {
 }
 
 function replaceClass(element, before, after) {
+    document.querySelector(`${element}`).classList.replace(`${before}`, `${after}`)
+}
+
+function replaceSiblingClass(element, before, after) {
     document.querySelector(`${element}`).nextElementSibling.classList.replace(`${before}`, `${after}`)
 }
 
 function insertHTML(element, content) {
     document.querySelector(`${element}`).nextElementSibling.innerHTML = `${content}`
 }
+
+// function conditionalToggle(condition, classname, classToggle) {
+//     document.querySelector(`${classname}`).classList.toggle(`${classToggle}`)
+// }
