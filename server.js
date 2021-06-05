@@ -34,7 +34,7 @@ mongoSession.on('error', (err) => { console.log('MongoDB-session error:' + err) 
 app
   .engine('liquid', liquidEngine) // register liquid engine
   .set('views', './pages') // specify the views directory
-  .set('view engine', 'liquid') // set liquid to default
+  .set('view engine', 'liquid') // set liquid as default
   .set('views', './views')
   .use(express.static('public'))
   .use(session({
