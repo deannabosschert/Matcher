@@ -203,28 +203,36 @@ if (formValidate) {
     })
 }
 
-function toggleClass(classname, classToggle) {
-    document.querySelector(`${classname}`).classList.toggle(`${classToggle}`)
+function toggleClass(target, classToggle) {
+    document.querySelector(`${target}`).classList.toggle(`${classToggle}`)
 }
 
-function addClass(classname, classToggle) {
-    document.querySelector(`${classname}`).classList.add(`${classToggle}`)
+function addClass(target, classname) {
+    document.querySelector(`${target}`).classList.add(`${classname}`)
 }
 
-function removeClass(classname, classToggle) {
-    document.querySelector(`${classname}`).classList.remove(`${classToggle}`)
+function onclickToggle(element, targets) {
+    document.querySelector(`${element}`).onclick = () => {
+      targets.map((target) => {
+        toggleClassAll(target)
+      })
+    }
+  }
+
+function removeClass(target, classToggle) {
+    document.querySelector(`${target}`).classList.remove(`${classToggle}`)
 }
 
-function replaceClass(element, before, after) {
-    document.querySelector(`${element}`).classList.replace(`${before}`, `${after}`)
+function replaceClass(target, before, after) {
+    document.querySelector(`${target}`).classList.replace(`${before}`, `${after}`)
 }
 
-function replaceSiblingClass(element, before, after) {
-    document.querySelector(`${element}`).nextElementSibling.classList.replace(`${before}`, `${after}`)
+function replaceSiblingClass(target, before, after) {
+    document.querySelector(`${target}`).nextElementSibling.classList.replace(`${before}`, `${after}`)
 }
 
-function insertHTML(element, content) {
-    document.querySelector(`${element}`).nextElementSibling.innerHTML = `${content}`
+function insertHTML(target, content) {
+    document.querySelector(`${target}`).nextElementSibling.innerHTML = `${content}`
 }
 
 // function conditionalToggle(condition, classname, classToggle) {
