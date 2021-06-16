@@ -34,7 +34,7 @@ mongoSession.on('error', (err) => { console.log('MongoDB-session error:' + err) 
 app
   .engine('liquid', liquidEngine) // register liquid engine
   .set('views', './pages') // specify the views directory
-  .set('view engine', 'liquid') // set liquid to default
+  .set('view engine', 'liquid') // set liquid as default
   .set('views', './views')
   .use(express.static('public'))
   .use(session({
@@ -49,7 +49,7 @@ app
     }
   }))
   .get('/', (req, res) => {  redirectUrl(req, res, 'home') })   // wanneer je op de url /${url}} zit, voer dan deze functie uit of render dan deze pagina
-  .get('/login', (req, res) => { redirectUrl(req, res, 'login'. users_db) })
+  .get('/login', (req, res) => { redirectUrl(req, res, 'login', users_db) }) // zelfde als bij '/', maar geef dan de databaseinfo mee
   .post('/logout', (req, res) => { redirectUrl(req, res, 'logout', users_db) })
   .get('/profile', (req, res) => { redirectUrl(req, res, 'profile', users_db) })
   .get('/remove', urlencodedParser, (req, res) => { res.render('pages/remove')})
@@ -58,5 +58,3 @@ app
   .post('/profile', upload.single('editImage'), urlencodedParser, (req, res) => { editProfile(req, res, users_db) })
   .post('/remove', urlencodedParser, (req, res) => { removeProfile(req, res, users_db) })
   .listen(port, () => { console.log(`Running on port ${port}`) }) // specificeer poort
-
-
