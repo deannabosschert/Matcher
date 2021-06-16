@@ -17,7 +17,8 @@ const controller = {
             data["likes"] = req.user.likes.filter(
               like => like === req.params.username
             )
-            data["liked"] = profile.likes.filter(like => like === req.user.username)
+            
+            // data["liked"] = profile.likes.filter(like => like === req.user.username)
           }
       
           return res.render("profile", data)
