@@ -1,4 +1,5 @@
 const formValidate = document.querySelector('#login_form')
+let signupCard = document.querySelector('.sign-up_card')
 if (formValidate) {
     replaceClass('.sign-up_card', 'sign-up_card-no-js', 'sign-up_card-has-js')
 
@@ -203,6 +204,28 @@ if (formValidate) {
     })
 }
 
+function submitform(target, ) {
+    const formID = document.querySelector(`${target}`)
+    formID.addEventListener('submit', (event) => {
+        event.preventDefault()
+        let err = false
+        let submitAllInputs = document.querySelector(`${formID}`)
+        submitAllInputs.querySelectorAll(':scope > input').forEach((input) => {
+            validateForm(input)
+            if (input.classList.contains('no-err') || input.classList.contains('err') || parseInt(window.formTotal) === 0) {
+                err = true
+            }
+        })
+        if (err === true) {
+            document.querySelector('#login-err-message').classList.replace('no-err-message', 'form-err-message')
+            replaceClass(target, before, after)
+        } else {
+            document.querySelector('#login-err-message').classList.replace('form-err-message', 'no-err-message')
+            document.querySelector('#login_form').submit()
+        }
+    })
+}
+
 function toggleClass(target, classToggle) {
     document.querySelector(`${target}`).classList.toggle(`${classToggle}`)
 }
@@ -210,15 +233,6 @@ function toggleClass(target, classToggle) {
 function addClass(target, classname) {
     document.querySelector(`${target}`).classList.add(`${classname}`)
 }
-
-function onclickToggle(element, targets) {
-    document.querySelector(`${element}`).onclick = () => {
-      targets.map((target) => {
-        toggleClassAll(target)
-      })
-    }
-  }
-
 function removeClass(target, classToggle) {
     document.querySelector(`${target}`).classList.remove(`${classToggle}`)
 }
